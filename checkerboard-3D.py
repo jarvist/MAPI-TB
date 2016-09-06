@@ -30,19 +30,31 @@ t=0.6
 my_model.set_onsite([-delta,delta,delta,delta])
 # set hoppings (one for each connected pair of orbitals)
 # (amplitude, i, j, [lattice vector to cell containing j])
-my_model.set_hop(t, 1, 0, [0, 0, 0])
-my_model.set_hop(t, 1, 0, [1, 0, 0])
-my_model.set_hop(t, 1, 0, [0, 1, 0])
-my_model.set_hop(t, 1, 0, [1, 1, 0])
+#my_model.set_hop(t, 1, 0, [0, 0, 0])
+#my_model.set_hop(t, 1, 0, [1, 0, 0])
+#my_model.set_hop(t, 1, 0, [0, 1, 0])
+#my_model.set_hop(t, 1, 0, [1, 1, 0])
+#my_model.set_hop(t, 1, 0, [0, 0, 1])
+#my_model.set_hop(t, 1, 0, [1, 0, 1])
+#my_model.set_hop(t, 1, 0, [0, 1, 1])
+#my_model.set_hop(t, 1, 0, [1, 1, 1])
 
-my_model.set_hop(t, 1, 0, [0, 0, 1])
-my_model.set_hop(t, 1, 0, [1, 0, 1])
-my_model.set_hop(t, 1, 0, [0, 1, 1])
-my_model.set_hop(t, 1, 0, [1, 1, 1])
+# Within 1st unit cell
+my_model.set_hop(t, 0, 1, [0,0,0])
+my_model.set_hop(t, 0, 2, [0,0,0])
+my_model.set_hop(t, 0, 3, [0,0,0])
+
+my_model.set_hop(t, 0, 1, [1,0,0])
+my_model.set_hop(t, 0, 2, [0,1,0])
+my_model.set_hop(t, 0, 3, [0,0,1])
 
 
 # print tight-binding model
 my_model.display()
+
+#Visualise that which we have
+(fig, ax) = my_model.visualize(0, 1)
+plt.show()
 
 # generate k-point path and labels
 #path=[[0.0,0.0,0.0],[0.0,0.5,0.0],[0.5,0.5,0.0],[0.5,0.5,0.5],[0.0,0.0,0.0]]
