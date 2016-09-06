@@ -12,9 +12,14 @@ import pylab as plt
 # define lattice vectors
 lat=[[1.0,0.0,0.0],[0.0,1.0,0.0],[0.0,0.0,1.0]]
 # define coordinates of orbitals
-orb=[[0.0,0.0,0.0],[0.5,0.5,0.5]]
+# Pb at [0,0,0]; 3 I at [0.5,0,0] and permutations
+orb=[[0.0,0.0,0.0],
+     [0.0,0.0,0.5],
+     [0.0,0.5,0.0],
+     [0.5,0.0,0.0]
+     ]
 
-# make two dimensional tight-binding checkerboard model
+# make 3D dimensional tight-binding model (real and recip)
 my_model=tb_model(3,3,lat,orb)
 
 # set model parameters
@@ -22,7 +27,7 @@ delta=1.1
 t=0.6
 
 # set on-site energies
-my_model.set_onsite([-delta,delta])
+my_model.set_onsite([-delta,delta,delta,delta])
 # set hoppings (one for each connected pair of orbitals)
 # (amplitude, i, j, [lattice vector to cell containing j])
 my_model.set_hop(t, 1, 0, [0, 0, 0])
@@ -87,6 +92,9 @@ ax.set_xlabel("Path in k-space")
 ax.set_ylabel("Band energy")
 # make an PDF figure of a plot
 fig.tight_layout()
+
+plt.show() # Show figure + wait to be dismissed
+
 fig.savefig("checkerboard-3D_band.pdf")
 
 print 'Done.\n'
