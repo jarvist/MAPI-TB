@@ -10,12 +10,12 @@ import numpy as np
 import pylab as plt
 
 # define lattice vectors
-lat=[[1.0,0.0],[0.0,1.0]]
+lat=[[1.0,0.0,0.0],[0.0,1.0,0.0],[0.0,0.0,1.0]]
 # define coordinates of orbitals
-orb=[[0.0,0.0],[0.5,0.5]]
+orb=[[0.0,0.0,0.0],[0.5,0.5,0.5]]
 
 # make two dimensional tight-binding checkerboard model
-my_model=tb_model(2,2,lat,orb)
+my_model=tb_model(3,3,lat,orb)
 
 # set model parameters
 delta=1.1
@@ -25,17 +25,23 @@ t=0.6
 my_model.set_onsite([-delta,delta])
 # set hoppings (one for each connected pair of orbitals)
 # (amplitude, i, j, [lattice vector to cell containing j])
-my_model.set_hop(t, 1, 0, [0, 0])
-my_model.set_hop(t, 1, 0, [1, 0])
-my_model.set_hop(t, 1, 0, [0, 1])
-my_model.set_hop(t, 1, 0, [1, 1])
+my_model.set_hop(t, 1, 0, [0, 0, 0])
+my_model.set_hop(t, 1, 0, [1, 0, 0])
+my_model.set_hop(t, 1, 0, [0, 1, 0])
+my_model.set_hop(t, 1, 0, [1, 1, 0])
+
+my_model.set_hop(t, 1, 0, [0, 0, 1])
+my_model.set_hop(t, 1, 0, [1, 0, 1])
+my_model.set_hop(t, 1, 0, [0, 1, 1])
+my_model.set_hop(t, 1, 0, [1, 1, 1])
+
 
 # print tight-binding model
 my_model.display()
 
 # generate k-point path and labels
-path=[[0.0,0.0],[0.0,0.5],[0.5,0.5],[0.0,0.0]]
-label=(r'$\Gamma $',r'$X$', r'$M$', r'$\Gamma $')
+path=[[0.0,0.0,0.0],[0.0,0.5,0.0],[0.5,0.5,0.0],[0.5,0.5,0.5],[0.0,0.0,0.0]]
+label=(r'$\Gamma $',r'$X$', r'$M$', r'$R$', r'$\Gamma $')
 (k_vec,k_dist,k_node)=my_model.k_path(path,301)
 
 print '---------------------------------------'
