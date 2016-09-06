@@ -40,8 +40,20 @@ my_model.set_hop(t, 1, 0, [1, 1, 1])
 my_model.display()
 
 # generate k-point path and labels
-path=[[0.0,0.0,0.0],[0.0,0.5,0.0],[0.5,0.5,0.0],[0.5,0.5,0.5],[0.0,0.0,0.0]]
-label=(r'$\Gamma $',r'$X$', r'$M$', r'$R$', r'$\Gamma $')
+#path=[[0.0,0.0,0.0],[0.0,0.5,0.0],[0.5,0.5,0.0],[0.5,0.5,0.5],[0.0,0.0,0.0]]
+#label=(r'$\Gamma $',r'$X$', r'$M$', r'$R$', r'$\Gamma $')
+# Adopt full BZ route for Simple Cubic from: https://dx.doi.org/10.1016%2Fj.commatsci.2010.05.010
+path=[  [0.0,0.0,0.0],
+        [0.0,0.5,0.0],
+        [0.5,0.5,0.0],
+        [0.0,0.0,0.0],
+        [0.5,0.5,0.5],
+        [0.0,0.5,0.0],
+        [0.5,0.5,0.0],
+        [0.0,0.0,0.0]]
+label=(r'$\Gamma $',r'$X$', r'$M$', r'$\Gamma $', r'$R$', r'$X$', r'$M$', r'$\Gamma $')
+
+
 (k_vec,k_dist,k_node)=my_model.k_path(path,301)
 
 print '---------------------------------------'
