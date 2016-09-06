@@ -70,11 +70,11 @@ for n in range(len(k_node)):
 for n in range(2):
   ax.plot(k_dist,evals[n])
 # put title
-ax.set_title("Checkerboard band structure")
+ax.set_title("Checkerboard-3D band structure")
 ax.set_xlabel("Path in k-space")
 ax.set_ylabel("Band energy")
 # make an PDF figure of a plot
 fig.tight_layout()
-fig.savefig("checkerboard_band.pdf")
+fig.savefig("checkerboard-3D_band.pdf")
 
 print 'Done.\n'
