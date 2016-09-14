@@ -44,9 +44,11 @@ my_model.set_hop(t, 0, 1, [0,0,0])
 my_model.set_hop(t, 0, 2, [0,0,0])
 my_model.set_hop(t, 0, 3, [0,0,0])
 
-my_model.set_hop(t, 0, 1, [1,0,0])
+my_model.set_hop(t, 0, 1, [0,0,1])
 my_model.set_hop(t, 0, 2, [0,1,0])
-my_model.set_hop(t, 0, 3, [0,0,1])
+my_model.set_hop(t, 0, 3, [1,0,0])
+
+#my_model.set_hop(t,0,0,[1,0,0])
 
 
 # print tight-binding model
@@ -99,7 +101,7 @@ for n in range(len(k_node)):
 for n in range(2):
   ax.plot(k_dist,evals[n])
 # put title
-ax.set_title("Checkerboard-3D band structure")
+ax.set_title("Towards a 3D band structure")
 ax.set_xlabel("Path in k-space")
 ax.set_ylabel("Band energy")
 # make an PDF figure of a plot
